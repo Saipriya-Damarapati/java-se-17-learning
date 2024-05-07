@@ -42,10 +42,10 @@ class TaskResult {
 class FutureCallable {
 
     public static TaskResult doTask(String name, int secs, boolean fail) {
-        System.out.printf("%s : Starting thread from FutureCallable demo \n", Thread.currentThread().getName());
+        System.out.printf("%s , %s : Starting thread from FutureCallable demo \n", name, Thread.currentThread().getName());
 
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(secs);
         } catch (InterruptedException e) {
             System.out.println("Thread interrupted");
         }
@@ -54,7 +54,7 @@ class FutureCallable {
             throw new RuntimeException("Task Failed");
         }
 
-        System.out.printf("%s : Ending thread from FutureCallable demo \n", Thread.currentThread().getName());
+        System.out.printf("%s , %s : Ending thread from FutureCallable demo \n", name, Thread.currentThread().getName());
         return new TaskResult(name, secs);
     }
 }
